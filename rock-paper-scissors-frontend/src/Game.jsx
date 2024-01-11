@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:3000');  // Connect to backend server
 let playerConnected = false;
+let game = "TestGame1"
 
 const Game = () => {
     const [username, setUsername] = useState('User' + Math.floor(Math.random() * 1000));  // Generate a random username

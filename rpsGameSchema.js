@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const rpsGameSchema = new mongoose.Schema({
 	lobbyName: String,
 	player1: {
+		sockid: String,
 		name: String,
         currentChoice: String,
 		currentRecord: {
@@ -13,6 +14,7 @@ const rpsGameSchema = new mongoose.Schema({
 		}
 	},
 	player2: {
+		sockid: String,
 		name: String,
         currentChoice: String,
 		currentRecord: {

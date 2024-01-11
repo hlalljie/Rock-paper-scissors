@@ -34,24 +34,6 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 
 });
-// Initialize a simple API endpoint for fetching chat history
-app.get('/chatHistory', async (req, res) => {
-  const messages = await ChatMessage.find();
-  res.json(messages);
-});
-
-
-// Handle socket events
-// io.on('connection', (socket) => {
-//   console.log('New client connected');
-//   socket.on('chat', (data) => {
-//     console.log('Message received:', data);
-//     checkAndEmit(data);
-//   });
-//   socket.on('disconnect', () => {
-//     console.log('Client disconnected');
-//   });
-// });
 
 // Handle rps socket events
 // handle client joining game, assigns them guest or host
@@ -83,12 +65,6 @@ function storeAndEmit(data){
   // if both responses are in, emit result
 
 }
-
-// function checkAndEmit(data){
-//     const chatMessage = new ChatMessage(data);
-//     chatMessage.save();
-//     io.emit('chat', data);
-// }
 
 // Start the Express server
 server.listen(port, () => {
