@@ -138,6 +138,11 @@ async function storeAndEmit(data, sockid){
       game.player2.currentRecord.losses += 1;
       io.emit("result", {winner: game.player1.name});
     }
+    else if (game.player1.currentChoice == "paper" && game.player2.currentChoice == "scissors"){
+      game.player1.currentRecord.losses += 1;
+      game.player2.currentRecord.wins += 1;
+      io.emit("result", {winner: game.player2.name});
+    }
     else if (game.player1.currentChoice == "paper" && game.player2.currentChoice == "rock"){
       game.player1.currentRecord.wins += 1;
       game.player2.currentRecord.losses += 1;

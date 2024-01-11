@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:3000');  // Connect to backend server
 let playerConnected = false;
-let lobbyName = "TestGame7";
+let lobbyName = "TestGame9";
 
 const Game = () => {
     const [username, setUsername] = useState('User' + Math.floor(Math.random() * 1000));  // Generate a random username
@@ -26,6 +26,7 @@ const Game = () => {
             else{
                 setResult("You lost this time, but you'll get em next time!");
             }
+            setTimeout(()=>{setResult('Go again!')}, 3000);
         });
     }, [username]);
     const submitChoice = (choice) => {
