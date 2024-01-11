@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 // handle client leaving game
 io.on('connection', (socket) => {
   var clientIp = socket.request.connection.remoteAddress;
-  console.log("new connection from:", clientIp, "- id", socket.id);
+  console.log("Hello world, new connection from:", clientIp, "- id", socket.id);
   socket.on('playerConnect', (data) => {
     console.log('Player Connected', data, "- id", socket.id);
     initPlayer(data, socket.id);
