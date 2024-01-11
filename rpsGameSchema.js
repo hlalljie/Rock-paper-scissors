@@ -22,7 +22,7 @@ const rpsGameSchema = new mongoose.Schema({
 			losses: Number,
 			ties: Number
 		}
-	},
+	}
 	// Optional settings (for if I have time to impliment)
 	// turnTimer: Number, // in seconds, -1 for unlimited
 	// ai: Boolean,
@@ -41,4 +41,4 @@ const rpsGameSchema = new mongoose.Schema({
 	// ]
 })
 
-module.exports = mongoose.model('rpsGame', rpsGameSchema);
+module.exports = mongoose.model('RPSGame', rpsGameSchema);
