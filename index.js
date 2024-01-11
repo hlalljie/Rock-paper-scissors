@@ -42,24 +42,53 @@ app.get('/chatHistory', async (req, res) => {
 
 
 // Handle socket events
+// io.on('connection', (socket) => {
+//   console.log('New client connected');
+//   socket.on('chat', (data) => {
+//     console.log('Message received:', data);
+//     checkAndEmit(data);
+//   });
+//   socket.on('disconnect', () => {
+//     console.log('Client disconnected');
+//   });
+// });
+
+// Handle rps socket events
+// handle client joining game, assigns them guest or host
+// handle client sending player choice
+// handle client leaving game
 io.on('connection', (socket) => {
-  console.log('New client connected');
-  socket.on('chat', (data) => {
-    console.log('Message received:', data);
-    checkAndEmit(data);
+  var clientIp = socket.request.connection.remoteAddress;
+  console.log("new connection from:", clientIp, "- id", socket.id);
+  socket.on('playerConnect', (data) => {
+    console.log('Player Connected', data, "- id", socket.id);
+    initPlayer(data, socket.id);
+  });
+  socket.on('rps', (data) => {
+    console.log('Message received:', data, "- id", socket.id);
+    storeAndEmit(data, socket.id);
   });
   socket.on('disconnect', () => {
-    console.log('Client disconnected');
+    console.log('Client disconnected', "- id", socket.id);
   });
 });
 
-
-
-function checkAndEmit(data){
-    const chatMessage = new ChatMessage(data);
-    chatMessage.save();
-    io.emit('chat', data);
+function initPlayer(data){
+  //console.log(data, "player connected");
 }
+
+function storeAndEmit(data){
+   //console.log(data, "ready to be stored");
+  // game id, and isHost to store response
+  // if both responses are in, emit result
+
+}
+
+// function checkAndEmit(data){
+//     const chatMessage = new ChatMessage(data);
+//     chatMessage.save();
+//     io.emit('chat', data);
+// }
 
 // Start the Express server
 server.listen(port, () => {
