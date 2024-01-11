@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ChatComponent from './ChatComponent.jsx';
 import './App.css'
+import Home from './Home.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,8 +9,8 @@ function App() {
   return (
     <>
     <div>
-      <h1>Your Application</h1>
-      <ChatComponent />
+      <Home/>
+      {/* <ChatComponent /> */}
     </div>
     </>
   )

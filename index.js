@@ -32,8 +32,8 @@ mongoose.connect(process.env.MONGO_URI)
 // Define a simple route
 app.get('/', (req, res) => {
   res.send('Hello, World!');
-});
 
+});
 // Initialize a simple API endpoint for fetching chat history
 app.get('/chatHistory', async (req, res) => {
   const messages = await ChatMessage.find();
@@ -52,6 +52,8 @@ io.on('connection', (socket) => {
     console.log('Client disconnected');
   });
 });
+
+
 
 function checkAndEmit(data){
     const chatMessage = new ChatMessage(data);
